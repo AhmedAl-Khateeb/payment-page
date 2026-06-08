@@ -17,6 +17,11 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::get('/clear-cache-now', function () {
+    \Artisan::call('optimize:clear');
+    return 'Cache cleared successfully';
+});
+
 require __DIR__.'/auth.php';
 require __DIR__.'/admin.php';
 require __DIR__.'/front.php';

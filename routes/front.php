@@ -20,6 +20,7 @@ Route::group([
         ->name('checkout.form');
     });
 });
+
 Route::any('/paymob/callback', [PaymobCallBackController::class, 'callback']);
 
 Route::get('/paymob/response', [PaymobCallBackController::class, 'response'])

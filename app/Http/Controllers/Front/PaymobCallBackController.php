@@ -57,17 +57,18 @@ class PaymobCallBackController extends Controller
         ]);
     }
 
-
     public function response(Request $request)
-{
-    if ($request->success == 'true') {
+    {
+        $success = filter_var($request->success, FILTER_VALIDATE_BOOLEAN);
+
+        if ($success) {
+            return redirect()
+                ->route('front.home')
+                ->with('success', 'Payment completed successfully');
+        }
+
         return redirect()
             ->route('front.home')
-            ->with('success', 'Payment completed successfully');
+            ->with('error', 'Payment failed');
     }
-
-    return redirect()
-        ->route('front.home')
-        ->with('error', 'Payment failed');
-}
 }
