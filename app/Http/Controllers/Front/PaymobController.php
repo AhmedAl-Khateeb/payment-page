@@ -68,10 +68,10 @@ class PaymobController extends Controller
             'payment_method' => 'paymob',
         ]);
 
-        dd([
-            'integration_id' => config('services.paymob.integration_id'),
-            'iframe_id' => config('services.paymob.iframe_id'),
-        ]);
+        // dd([
+        //     'integration_id' => config('services.paymob.integration_id'),
+        //     'iframe_id' => config('services.paymob.iframe_id'),
+        // ]);
 
         $paymentToken = $this->paymobService->generatePaymentKey(
             $token,
