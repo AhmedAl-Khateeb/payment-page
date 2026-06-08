@@ -56,4 +56,18 @@ class PaymobCallBackController extends Controller
             'success' => true,
         ]);
     }
+
+
+    public function response(Request $request)
+{
+    if ($request->success == 'true') {
+        return redirect()
+            ->route('front.home')
+            ->with('success', 'Payment completed successfully');
+    }
+
+    return redirect()
+        ->route('front.home')
+        ->with('error', 'Payment failed');
+}
 }
